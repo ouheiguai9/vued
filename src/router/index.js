@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 
 const routes = [
   {
@@ -14,12 +13,13 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
-    component: import(/* webpackChunkName: "404" */ "../views/NotFound.vue"),
+    component: () =>
+      import(/* webpackChunkName: "404" */ "../views/NotFound.vue"),
   },
 ];
 
