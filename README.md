@@ -1,4 +1,4 @@
-# vuem
+# vued
 
 ## Project setup
 ```
