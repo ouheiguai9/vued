@@ -3,6 +3,12 @@ module.exports = {
   chainWebpack: (config) => {
     //启动后自动打开浏览器
     config.devServer.open(true);
+    config.externals({
+      vue: "Vue",
+      "vue-router": "VueRouter",
+      vuex: "Vuex",
+      "element-plus": "ElementPlus",
+    });
     config.optimization.minimizer("terser").tap((args) => {
       let option = args[0];
       //删除console.*
