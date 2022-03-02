@@ -1,5 +1,9 @@
 # vued
 
+## Project description
+1. *vue + vue-router + vuex*
+2. *element-plus*
+
 ## Project setup
 ```
 yarn install
