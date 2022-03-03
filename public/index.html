@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="<%= BASE_URL %>library/element-plus@2.0.3/dist/index.css">
+    <script src="<%= BASE_URL %>library/vue@3.2.31/dist/vue.global.js"></script>
+    <script src="<%= BASE_URL %>library/vue-router@4.0.13/dist/vue-router.global.prod.js"></script>
+    <script src="<%= BASE_URL %>library/vuex@4.0.2/dist/vuex.global.prod.js"></script>
+    <script src="<%= BASE_URL %>library/element-plus@2.0.3/dist/index.full.min.js"></script>
 </head>
 <body>
 <noscript>
-  <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-    Please enable it to continue.</strong>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
 </noscript>
 <div id="app"></div>
 <!-- built files will be auto injected -->

@@ -1,38 +1,62 @@
-const ExtractLibraryPlugin = require("./plugin/extract-library-plugin");
+// noinspection JSUnusedGlobalSymbols
 const isProduction = process.env.NODE_ENV === "production";
+//不参与打包的第三方类库
+const modules = [
+  {
+    name: "vue",
+    var: "Vue",
+    paths: ["dist/vue.global.js"],
+  },
+  {
+    name: "vue-router",
+    var: "VueRouter",
+    paths: ["dist/vue-router.global.prod.js"],
+  },
+  {
+    name: "vuex",
+    var: "Vuex",
+    paths: ["dist/vuex.global.prod.js"],
+  },
+  {
+    name: "element-plus",
+    var: "ElementPlus",
+    paths: ["dist/index.css", "dist/index.full.min.js"],
+  },
+];
+const externals = {};
+modules.forEach((module) => {
+  module.version = require(`${module.name}/package.json`).version;
+  module.dir = `${module.name}@${module.version}`;
+  module.lastPaths = module.paths.map(
+    (path) => `library/${module.dir}/${path}`
+  );
+  externals[module.name] = module.var;
+});
+
 module.exports = {
   chainWebpack: (config) => {
     //启动后自动打开浏览器
     config.devServer.open(true);
-    config.plugin("ExtractLibraryPlugin").use(ExtractLibraryPlugin, [
-      {
-        prod: isProduction,
-        modules: [
-          {
-            name: "vue",
-            var: "Vue",
-            path: "dist/vue.global.js",
-          },
-          {
-            name: "vue-router",
-            var: "VueRouter",
-            path: "dist/vue-router.global.prod.js",
-          },
-          {
-            name: "vuex",
-            var: "Vuex",
-            path: "dist/vuex.global.prod.js",
-          },
-          {
-            name: "element-plus",
-            var: "ElementPlus",
-            path: "dist/index.full.min.js",
-            style: "dist/index.css",
-          },
-        ],
-        libraryPath: "/node_modules",
-      },
-    ]);
+    //排除第三方类库
+    config.externals(externals);
+    //复制第三方类库dist文件
+    config
+      .plugin("copy-library")
+      .use(require("copy-webpack-plugin"), [
+        modules.flatMap((module) => {
+          return module.paths.map((path, index) => {
+            return {
+              from: `node_modules/${module.name}/${path}`,
+              to: "",
+              transformPath() {
+                return module.lastPaths[index];
+              },
+            };
+          });
+        }),
+      ])
+      .after("copy");
+
     config.optimization.minimizer("terser").tap((args) => {
       let option = args[0];
       //删除console.*
@@ -41,31 +65,5 @@ module.exports = {
       option.sourceMap = !isProduction;
       return args;
     });
-    // 三方模块打包优化
-    // config.optimization.splitChunks({
-    //   chunks: "all",
-    //   minSize: 1024 * 60, //单位bytes
-    //   cacheGroups: {
-    //     vendors: {
-    //       name(module) {
-    //         // 排除node_modules 然后吧 @ 替换为空 ,考虑到服务器的兼容
-    //         const packageName = module.context.match(
-    //           /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-    //         )[1];
-    //         return `${packageName.replace("@", "")}`;
-    //       },
-    //       test: /[\\/]node_modules[\\/]/,
-    //       priority: -10,
-    //       chunks: "initial",
-    //     },
-    //     common: {
-    //       name: "chunk-common",
-    //       minChunks: 2,
-    //       priority: -20,
-    //       chunks: "initial",
-    //       reuseExistingChunk: true,
-    //     },
-    //   },
-    // });
   },
 };
