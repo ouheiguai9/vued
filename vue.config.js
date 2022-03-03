@@ -1,14 +1,38 @@
+const ExtractLibraryPlugin = require("./plugin/extract-library-plugin");
 const isProduction = process.env.NODE_ENV === "production";
 module.exports = {
   chainWebpack: (config) => {
     //启动后自动打开浏览器
     config.devServer.open(true);
-    config.externals({
-      vue: "Vue",
-      "vue-router": "VueRouter",
-      vuex: "Vuex",
-      "element-plus": "ElementPlus",
-    });
+    config.plugin("ExtractLibraryPlugin").use(ExtractLibraryPlugin, [
+      {
+        prod: isProduction,
+        modules: [
+          {
+            name: "vue",
+            var: "Vue",
+            path: "dist/vue.global.js",
+          },
+          {
+            name: "vue-router",
+            var: "VueRouter",
+            path: "dist/vue-router.global.prod.js",
+          },
+          {
+            name: "vuex",
+            var: "Vuex",
+            path: "dist/vuex.global.prod.js",
+          },
+          {
+            name: "element-plus",
+            var: "ElementPlus",
+            path: "dist/index.full.min.js",
+            style: "dist/index.css",
+          },
+        ],
+        libraryPath: "/node_modules",
+      },
+    ]);
     config.optimization.minimizer("terser").tap((args) => {
       let option = args[0];
       //删除console.*
