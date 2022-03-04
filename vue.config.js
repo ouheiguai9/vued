@@ -1,4 +1,5 @@
 // noinspection JSUnusedGlobalSymbols
+const nodeModulesPath = "node_modules";
 const isProduction = process.env.NODE_ENV === "production";
 //不参与打包的第三方类库
 const modules = [
@@ -25,9 +26,10 @@ const modules = [
 ];
 const externals = {};
 modules.forEach((module) => {
-  module.version = require(`${module.name}/package.json`).version;
+  module.version =
+    require(`./${nodeModulesPath}/${module.name}/package.json`).version;
   module.dir = `${module.name}@${module.version}`;
-  module.lastPaths = module.paths.map(
+  module.finalPaths = module.paths.map(
     (path) => `library/${module.dir}/${path}`
   );
   externals[module.name] = module.var;
@@ -39,17 +41,28 @@ module.exports = {
     config.devServer.open(true);
     //排除第三方类库
     config.externals(externals);
-    //复制第三方类库dist文件
+    //复制第三方类库dist文件,将第三方类库插入到html中
     config
+      .plugin("html-webpack-tags-plugin")
+      .use(require("html-webpack-tags-plugin"), [
+        {
+          tags: modules.flatMap((module) => {
+            return module.finalPaths;
+          }),
+          append: false,
+        },
+      ])
+      .after("html")
+      .end()
       .plugin("copy-library")
       .use(require("copy-webpack-plugin"), [
         modules.flatMap((module) => {
           return module.paths.map((path, index) => {
             return {
-              from: `node_modules/${module.name}/${path}`,
+              from: `${nodeModulesPath}/${module.name}/${path}`,
               to: "",
               transformPath() {
-                return module.lastPaths[index];
+                return module.finalPaths[index];
               },
             };
           });
