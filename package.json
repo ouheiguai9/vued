@@ -31,7 +31,8 @@
     "html-webpack-tags-plugin": "2.0.17",
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "terser-webpack-plugin": "4.2.3"
   },
   "eslintConfig": {
     "root": true,
