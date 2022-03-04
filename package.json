@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "inspect": "vue-cli-service inspect > dist/output.js"
+    "inspect": "vue-cli-service inspect"
   },
   "dependencies": {
     "core-js": "^3.6.5",
