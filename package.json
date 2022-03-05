@@ -85,7 +85,35 @@
           "avoidEscape": true,
           "allowTemplateLiterals": true
         }
-      ]
+      ],
+      "array-bracket-newline": [
+        "error",
+        {
+          "multiline": true,
+          "minItems": 4
+        }
+      ],
+      "array-bracket-spacing": [
+        "error",
+        "always",
+        {
+          "singleValue": false
+        }
+      ],
+      "array-element-newline": [
+        "error",
+        {
+          "ArrayExpression": "consistent",
+          "ArrayPattern": {
+            "minItems": 3
+          }
+        }
+      ],
+      "eqeqeq": [
+        "error",
+        "always"
+      ],
+      "key-spacing": "error"
     },
     "parserOptions": {
       "parser": "@babel/eslint-parser"

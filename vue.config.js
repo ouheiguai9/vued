@@ -1,4 +1,3 @@
-// noinspection JSUnusedGlobalSymbols
 const nodeModulesPath = 'node_modules';
 const isProduction = process.env.NODE_ENV === 'production';
 //不参与打包的第三方类库
@@ -21,7 +20,7 @@ const modules = [
   {
     name: 'element-plus',
     var: 'ElementPlus',
-    paths: ['dist/index.css', 'dist/index.full.min.js'],
+    paths: [ 'dist/index.css', 'dist/index.full.min.js' ],
   },
 ];
 const externals = {};
@@ -35,6 +34,7 @@ modules.forEach((module) => {
   externals[module.name] = module.var;
 });
 
+// noinspection JSUnusedGlobalSymbols
 module.exports = {
   chainWebpack: (config) => {
     //启动后自动打开浏览器
@@ -58,6 +58,7 @@ module.exports = {
       .use(require('copy-webpack-plugin'), [
         modules.flatMap((module) => {
           return module.paths.map((path, index) => {
+            // noinspection JSUnusedGlobalSymbols
             return {
               from: `${nodeModulesPath}/${module.name}/${path}`,
               to: '',
