@@ -16,16 +16,18 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
     "@vue/cli-plugin-babel": "~4.5.15",
+    "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~4.5.15",
     "@vue/cli-plugin-vuex": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
     "@vue/compiler-sfc": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
-    "eslint": "7.32.0",
-    "eslint-webpack-plugin": "2.6.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
     "html-webpack-tags-plugin": "2.0.17",
-    "prettier": "2.5.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "terser-webpack-plugin": "4.2.3"
@@ -35,7 +37,59 @@
     "env": {
       "node": true
     },
-    "rules": {}
+    "extends": [
+      "eslint:recommended",
+      "plugin:vue/vue3-recommended"
+    ],
+    "rules": {
+      "vue/html-closing-bracket-newline": [
+        "error",
+        {
+          "singleline": "never",
+          "multiline": "always"
+        }
+      ],
+      "vue/max-attributes-per-line": [
+        "error",
+        {
+          "singleline": {
+            "max": 3
+          },
+          "multiline": {
+            "max": 3
+          }
+        }
+      ],
+      "vue/max-len": [
+        "error",
+        {
+          "code": 150,
+          "template": 150,
+          "tabWidth": 2,
+          "comments": 150,
+          "ignorePattern": "",
+          "ignoreComments": false,
+          "ignoreTrailingComments": false,
+          "ignoreUrls": false,
+          "ignoreStrings": false,
+          "ignoreTemplateLiterals": false,
+          "ignoreRegExpLiterals": false,
+          "ignoreHTMLAttributeValues": false,
+          "ignoreHTMLTextContents": false
+        }
+      ],
+      "quotes": [
+        "error",
+        "single",
+        {
+          "avoidEscape": true,
+          "allowTemplateLiterals": true
+        }
+      ]
+    },
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    }
   },
   "browserslist": [
     "> 1%",

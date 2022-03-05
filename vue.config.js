@@ -1,27 +1,27 @@
 // noinspection JSUnusedGlobalSymbols
-const nodeModulesPath = "node_modules";
-const isProduction = process.env.NODE_ENV === "production";
+const nodeModulesPath = 'node_modules';
+const isProduction = process.env.NODE_ENV === 'production';
 //不参与打包的第三方类库
 const modules = [
   {
-    name: "vue",
-    var: "Vue",
-    paths: ["dist/vue.global.js"],
+    name: 'vue',
+    var: 'Vue',
+    paths: ['dist/vue.global.js'],
   },
   {
-    name: "vue-router",
-    var: "VueRouter",
-    paths: ["dist/vue-router.global.prod.js"],
+    name: 'vue-router',
+    var: 'VueRouter',
+    paths: ['dist/vue-router.global.prod.js'],
   },
   {
-    name: "vuex",
-    var: "Vuex",
-    paths: ["dist/vuex.global.prod.js"],
+    name: 'vuex',
+    var: 'Vuex',
+    paths: ['dist/vuex.global.prod.js'],
   },
   {
-    name: "element-plus",
-    var: "ElementPlus",
-    paths: ["dist/index.css", "dist/index.full.min.js"],
+    name: 'element-plus',
+    var: 'ElementPlus',
+    paths: ['dist/index.css', 'dist/index.full.min.js'],
   },
 ];
 const externals = {};
@@ -43,8 +43,8 @@ module.exports = {
     config.externals(externals);
     //复制第三方类库dist文件,将第三方类库插入到html中
     config
-      .plugin("html-webpack-tags-plugin")
-      .use(require("html-webpack-tags-plugin"), [
+      .plugin('html-webpack-tags-plugin')
+      .use(require('html-webpack-tags-plugin'), [
         {
           tags: modules.flatMap((module) => {
             return module.finalPaths;
@@ -52,15 +52,15 @@ module.exports = {
           append: false,
         },
       ])
-      .after("html")
+      .after('html')
       .end()
-      .plugin("copy-library")
-      .use(require("copy-webpack-plugin"), [
+      .plugin('copy-library')
+      .use(require('copy-webpack-plugin'), [
         modules.flatMap((module) => {
           return module.paths.map((path, index) => {
             return {
               from: `${nodeModulesPath}/${module.name}/${path}`,
-              to: "",
+              to: '',
               transformPath() {
                 return module.finalPaths[index];
               },
@@ -68,9 +68,9 @@ module.exports = {
           });
         }),
       ])
-      .after("copy");
+      .after('copy');
 
-    config.optimization.minimizer("terser").tap((args) => {
+    config.optimization.minimizer('terser').tap((args) => {
       let option = args[0];
       //删除console.*
       option.terserOptions.compress.drop_console = isProduction;
