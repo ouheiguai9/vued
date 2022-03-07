@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home';
-import Login from '../views/Login';
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../views/Home'
+import Login from '../views/Login'
 
 const routes = [
   {
@@ -22,16 +22,16 @@ const routes = [
       // which is lazy-loaded when the route is visited.
       import(/* webpackChunkName: "404" */ '../views/NotFound.vue'),
   },
-];
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-});
+})
 
 router.beforeEach((to, from, next) => {
   if (to.name !== 'Login') next({ name: 'Login' })
   else next()
 })
 
-export default router;
+export default router

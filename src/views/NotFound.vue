@@ -4,12 +4,8 @@
     <span class="item">0</span>
     <span class="item">4</span>
     <div>
-      <el-link type="info" :underline="false">
-        页面不存在!
-      </el-link>&nbsp;&nbsp;
-      <el-link type="danger" @click="goToBack()">
-        返回
-      </el-link>
+      <el-link type="info" :underline="false"> 页面不存在! </el-link>&nbsp;&nbsp;
+      <el-link type="danger" @click="goToBack()"> 返回 </el-link>
     </div>
   </section>
 </template>
@@ -19,10 +15,10 @@ export default {
   name: 'NotFound',
   methods: {
     goToBack: function () {
-      this.$router.back();
+      this.$router.back()
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

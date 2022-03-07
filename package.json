@@ -29,8 +29,11 @@
     "@vue/compiler-sfc": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier-vue": "^3.1.0",
     "eslint-plugin-vue": "^8.0.3",
     "html-webpack-tags-plugin": "2.0.17",
+    "prettier": "^2.5.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "terser-webpack-plugin": "4.2.3"
@@ -42,81 +45,24 @@
     },
     "extends": [
       "eslint:recommended",
-      "plugin:vue/vue3-recommended"
+      "plugin:vue/vue3-recommended",
+      "plugin:prettier-vue/recommended",
+      "prettier"
     ],
     "rules": {
-      "vue/html-closing-bracket-newline": [
+      "prettier-vue/prettier": [
         "error",
         {
-          "singleline": "never",
-          "multiline": "always"
-        }
-      ],
-      "vue/max-attributes-per-line": [
-        "error",
-        {
-          "singleline": {
-            "max": 3
-          },
-          "multiline": {
-            "max": 3
-          }
-        }
-      ],
-      "vue/max-len": [
-        "error",
-        {
-          "code": 150,
-          "template": 150,
-          "tabWidth": 2,
-          "comments": 150,
-          "ignorePattern": "",
-          "ignoreComments": false,
-          "ignoreTrailingComments": false,
-          "ignoreUrls": false,
-          "ignoreStrings": false,
-          "ignoreTemplateLiterals": false,
-          "ignoreRegExpLiterals": false,
-          "ignoreHTMLAttributeValues": false,
-          "ignoreHTMLTextContents": false
-        }
-      ],
-      "quotes": [
-        "error",
-        "single",
-        {
-          "avoidEscape": true,
-          "allowTemplateLiterals": true
-        }
-      ],
-      "array-bracket-newline": [
-        "error",
-        {
-          "multiline": true,
-          "minItems": 4
-        }
-      ],
-      "array-bracket-spacing": [
-        "error",
-        "always",
-        {
-          "singleValue": false
-        }
-      ],
-      "array-element-newline": [
-        "error",
-        {
-          "ArrayExpression": "consistent",
-          "ArrayPattern": {
-            "minItems": 3
-          }
+          "printWidth": 150,
+          "singleQuote": true,
+          "semi": false,
+          "trailingComma": "es5"
         }
       ],
       "eqeqeq": [
         "error",
         "always"
-      ],
-      "key-spacing": "error"
+      ]
     },
     "parserOptions": {
       "parser": "@babel/eslint-parser"

@@ -1,5 +1,5 @@
-const nodeModulesPath = 'node_modules';
-const isProduction = process.env.NODE_ENV === 'production';
+const nodeModulesPath = 'node_modules'
+const isProduction = process.env.NODE_ENV === 'production'
 //不参与打包的第三方类库
 const modules = [
   {
@@ -20,34 +20,31 @@ const modules = [
   {
     name: 'element-plus',
     var: 'ElementPlus',
-    paths: [ 'dist/index.css', 'dist/index.full.min.js' ],
+    paths: ['dist/index.css', 'dist/index.full.min.js'],
   },
-];
-const externals = {};
+]
+const externals = {}
 modules.forEach((module) => {
-  module.version =
-    require(`./${nodeModulesPath}/${module.name}/package.json`).version;
-  module.dir = `${module.name}@${module.version}`;
-  module.finalPaths = module.paths.map(
-    (path) => `library/${module.dir}/${path}`
-  );
-  externals[module.name] = module.var;
-});
+  module.version = require(`./${nodeModulesPath}/${module.name}/package.json`).version
+  module.dir = `${module.name}@${module.version}`
+  module.finalPaths = module.paths.map((path) => `library/${module.dir}/${path}`)
+  externals[module.name] = module.var
+})
 
 // noinspection JSUnusedGlobalSymbols
 module.exports = {
   chainWebpack: (config) => {
     //启动后自动打开浏览器
-    config.devServer.open(true);
+    config.devServer.open(true)
     //排除第三方类库
-    config.externals(externals);
+    config.externals(externals)
     //复制第三方类库dist文件,将第三方类库插入到html中
     config
       .plugin('html-webpack-tags-plugin')
       .use(require('html-webpack-tags-plugin'), [
         {
           tags: modules.flatMap((module) => {
-            return module.finalPaths;
+            return module.finalPaths
           }),
           append: false,
         },
@@ -63,21 +60,21 @@ module.exports = {
               from: `${nodeModulesPath}/${module.name}/${path}`,
               to: '',
               transformPath() {
-                return module.finalPaths[index];
+                return module.finalPaths[index]
               },
-            };
-          });
+            }
+          })
         }),
       ])
-      .after('copy');
+      .after('copy')
 
     config.optimization.minimizer('terser').tap((args) => {
-      let option = args[0];
+      let option = args[0]
       //删除console.*
-      option.terserOptions.compress.drop_console = isProduction;
+      option.terserOptions.compress.drop_console = isProduction
       //禁止生成.map文件
-      option.sourceMap = !isProduction;
-      return args;
-    });
+      option.sourceMap = !isProduction
+      return args
+    })
   },
-};
+}
