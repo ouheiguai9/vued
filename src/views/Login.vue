@@ -1,7 +1,7 @@
 <template>
   <el-card class="login-card">
     <template #header>
-      <div class="card-header">
+      <div class="login-card-title">
         Vue3 Demo
       </div>
     </template>
@@ -12,7 +12,7 @@
       <el-form-item>
         <el-input
           v-model="form.password" placeholder="请输入密码" show-password
-          :prefix-icon="Key"
+          :prefix-icon="Lock"
         />
       </el-form-item>
       <div class="btn-box">
@@ -26,20 +26,23 @@
     </el-form>
   </el-card>
 </template>
-<script setup>
-import {User, Key} from '@element-plus/icons-vue';
-</script>
 <script>
+import { Lock, User } from '@element-plus/icons-vue';
+
 export default {
   name: 'LoginView',
+  setup() {
+    return {
+      User, Lock
+    };
+  },
   data() {
     return {
       form: {
         username: '',
-        password: '',
-
+        password: ''
       }
-    }
+    };
   },
   methods: {
     onLogin() {
@@ -54,12 +57,22 @@ export default {
 <style scoped lang="scss">
 .login-card {
   width: 400px;
-  margin: 280px auto 0;
+  margin: 300px auto 0;
   font-size: var(--el-font-size-extra-large);
+
+  @media screen and (max-height: 768px) {
+    margin-top: 180px;
+  }
+
+  .login-card-title {
+    color: var(--el-color-primary-dark-2);
+  }
+
+  .btn-box {
+    width: 100%;
+    text-align: center;
+  }
 }
 
-.btn-box {
-  width: 100%;
-  text-align: center;
-}
+
 </style>
