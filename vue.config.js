@@ -5,17 +5,17 @@ const modules = [
   {
     name: 'vue',
     var: 'Vue',
-    paths: ['dist/vue.global.js'],
+    paths: [`dist/vue.global${isProduction ? '.prod' : ''}.js`],
   },
   {
     name: 'vue-router',
     var: 'VueRouter',
-    paths: ['dist/vue-router.global.prod.js'],
+    paths: [`dist/vue-router.global${isProduction ? '.prod' : ''}.js`],
   },
   {
     name: 'vuex',
     var: 'Vuex',
-    paths: ['dist/vuex.global.prod.js'],
+    paths: [`dist/vuex.global${isProduction ? '.prod' : ''}.js`],
   },
   {
     name: 'element-plus',
