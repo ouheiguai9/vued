@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home'
 import Login from '../views/Login'
+import store from '@/store'
 
 const routes = [
   {
@@ -30,8 +31,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login') next({ name: 'Login' })
-  else next()
+  if (to.name !== 'Login' && to.meta.noAuthenticationRequired !== true && !store.getters['security/isAuthenticated']) {
+    store.commit('security/setSuccessfulPath', to)
+    next({ name: 'Login' })
+  } else {
+    next()
+  }
 })
 
 export default router

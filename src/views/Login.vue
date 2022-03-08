@@ -36,8 +36,19 @@ export default {
       },
     }
   },
+  created() {
+    this.$store.dispatch('security/logout')
+  },
   methods: {
-    onLogin() {},
+    onLogin() {
+      this.$store.dispatch('security/authentication', this.form).then(() => {
+        if (this.$store.getters['security/isAuthenticated']) {
+          const successfulPath = this.$store.getters['security/getSuccessfulPath']
+          this.$store.dispatch('security/resetSuccessfulPath')
+          this.$router.push(successfulPath)
+        }
+      })
+    },
     onRegister() {},
   },
 }
