@@ -10,6 +10,8 @@ export default {
     subject: null,
     //登录成功后跳转路径，默认为Home
     successfulPath: defaultSuccessfulPath,
+    //资源权限
+    permissions: [],
   },
   getters: {
     isAuthenticated(state) {
@@ -17,6 +19,9 @@ export default {
     },
     getSuccessfulPath(state) {
       return state.successfulPath
+    },
+    hasPermission: (state) => (resource) => {
+      return state.permissions.indexOf(resource) > -1
     },
   },
   mutations: {
