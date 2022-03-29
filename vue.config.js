@@ -20,7 +20,7 @@ const modules = [
   {
     name: 'element-plus',
     var: 'ElementPlus',
-    paths: ['dist/index.css', 'dist/index.full.min.js'],
+    paths: ['dist/index.css', `dist/index.full${isProduction ? '.min' : ''}.js`],
   },
 ]
 const externals = {}
