@@ -3,20 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueI18n from './plugins/vue-i18n'
+import i18n from './i18n'
 import Const from './constant'
 
-const app = createApp(App)
-  .use(ElementPlus, {
-    locale: zhCn,
-    size: 'small',
-    zIndex: 3000,
-  })
-  .use(VueAxios, axios)
-  .use(store)
-  .use(router)
+const app = createApp(App).use(ElementPlus).use(VueAxios, axios).use(store).use(router).use(VueI18n, i18n)
 //自定义权限指令
 app.directive('auth', (el, binding) => {
   const hasPermission = store.getters['security/hasPermission']

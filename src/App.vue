@@ -1,6 +1,24 @@
 <template>
-  <router-view />
+  <el-config-provider :locale="elementPlusLocale" size="small">
+    <router-view />
+  </el-config-provider>
 </template>
+<script>
+import i18n from './i18n'
+export default {
+  name: 'App',
+  data() {
+    return {
+      language: 'zhCn',
+    }
+  },
+  computed: {
+    elementPlusLocale() {
+      return i18n[this.language].element
+    },
+  },
+}
+</script>
 <style lang="scss">
 * {
   box-sizing: border-box;
