@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import security from './security'
+import system from './system'
 
 export default createStore({
   state: {},
@@ -7,5 +8,6 @@ export default createStore({
   actions: {},
   modules: {
     security,
+    system,
   },
 })

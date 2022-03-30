@@ -1,18 +1,18 @@
 <template>
   <el-card class="login-card">
     <template #header>
-      <div class="login-card-title">Vue3 Demo</div>
+      <div class="login-card-title">{{ $lang('app.login.title') }}</div>
     </template>
     <el-form :model="form" size="large">
       <el-form-item>
-        <el-input v-model="form.username" placeholder="请输入用户名" :prefix-icon="User" />
+        <el-input v-model="form.username" :placeholder="$lang('app.login.user')" :prefix-icon="User" />
       </el-form-item>
       <el-form-item>
-        <el-input v-model="form.password" placeholder="请输入密码" show-password :prefix-icon="Lock" />
+        <el-input v-model="form.password" :placeholder="$lang('app.login.password')" show-password :prefix-icon="Lock" />
       </el-form-item>
       <div class="btn-box">
-        <el-button type="primary" @click="onLogin"> 登录 </el-button>
-        <el-button @click="onRegister"> 注册 </el-button>
+        <el-button type="primary" @click="onLogin">{{ $lang('app.login.ok') }}</el-button>
+        <el-button @click="onRegister">{{ $lang('app.login.register') }}</el-button>
       </div>
     </el-form>
   </el-card>
