@@ -1,5 +1,5 @@
 <template>
-  <el-config-provider :locale="$store.getters['system/getElementLocale']" size="small">
+  <el-config-provider :locale="$store.getters['system/getElementLocale']" size="small" :z-index="3000">
     <router-view />
   </el-config-provider>
 </template>
