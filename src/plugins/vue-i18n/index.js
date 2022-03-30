@@ -5,7 +5,7 @@ export default {
         if (obj) return obj[attr]
       }, options)
       if (!template) return
-      return template.replace(/\{(\w+)\}/g, (match, attr) => context[attr])
+      return template.replace(/{(\w+)}/g, (match, attr) => context[attr])
     }
   },
 }
