@@ -1,11 +1,19 @@
 <template>
   <el-config-provider :locale="$store.getters['system/getElementLocale']" size="small" :z-index="3000">
-    <router-view />
+    <system-layout v-if="$store.getters['security/isAuthenticated']">
+      <template #main>
+        <router-view />
+      </template>
+    </system-layout>
+    <no-auth v-else />
   </el-config-provider>
 </template>
 <script>
+import NoAuth from '@/components/NoAuth'
+import SystemLayout from '@/components/system-layout'
 export default {
   name: 'App',
+  components: { NoAuth, SystemLayout },
 }
 </script>
 <style lang="scss">

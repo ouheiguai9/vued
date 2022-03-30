@@ -17,8 +17,19 @@ export default {
     getLanguageContext(state) {
       return state.i18n[state.language]
     },
+    getLanguageOptions(state) {
+      return Object.keys(state.i18n)
+        .filter((key) => key !== state.language)
+        .map((key) => {
+          return { text: state.i18n[key].desc, value: key }
+        })
+    },
   },
-  mutations: {},
+  mutations: {
+    setLanguage(state, language) {
+      state.language = language
+    },
+  },
   actions: {},
   modules: {},
 }
