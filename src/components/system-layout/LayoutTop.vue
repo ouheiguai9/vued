@@ -21,15 +21,17 @@ export default {
   position: relative;
   height: 100%;
   flex-direction: column;
+  background-color: var(--el-color-info-light-9);
 
   header {
     height: 48px;
     padding: 0 16px;
     flex-shrink: 0;
+    background-color: #fff;
+    box-shadow: var(--el-box-shadow-light);
   }
 
   main {
-    padding-top: 10px;
     flex: 1 1 auto;
     overflow: auto;
   }
