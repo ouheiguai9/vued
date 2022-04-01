@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%; height: 100%">
+  <div class="no-auth-container">
     <el-card v-if="showLoginCard" class="login-card">
       <template #header>
         <div class="login-card-title">
@@ -64,22 +64,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.login-card {
-  width: 400px;
-  margin: 300px auto 0;
-  font-size: var(--el-font-size-extra-large);
+.no-auth-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 
-  @media screen and (max-height: 768px) {
-    margin-top: 180px;
-  }
+  .login-card {
+    width: 400px;
+    font-size: var(--el-font-size-extra-large);
+    flex: none;
 
-  .login-card-title {
-    color: var(--el-color-primary-dark-2);
-  }
+    .login-card-title {
+      color: var(--el-color-primary-dark-2);
+    }
 
-  .btn-box {
-    width: 100%;
-    text-align: center;
+    .btn-box {
+      width: 100%;
+      text-align: center;
+    }
   }
 }
 </style>
