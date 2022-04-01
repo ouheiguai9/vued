@@ -14,15 +14,16 @@ export default {
     getElementLocale(state) {
       return state.i18n[state.language].element
     },
+    getLanguage(state) {
+      return state.language
+    },
     getLanguageContext(state) {
       return state.i18n[state.language]
     },
     getLanguageOptions(state) {
-      return Object.keys(state.i18n)
-        .filter((key) => key !== state.language)
-        .map((key) => {
-          return { text: state.i18n[key].desc, value: key }
-        })
+      return Object.keys(state.i18n).map((key) => {
+        return { text: state.i18n[key].desc, value: key }
+      })
     },
   },
   mutations: {
