@@ -4,7 +4,7 @@
       <template #header>
         <div class="login-card-title">
           {{ $lang('app.login.title') }}
-          <switch-language style="float: right" />
+          <switch-language />
         </div>
       </template>
       <el-form :model="form" size="large">
@@ -77,6 +77,9 @@ export default {
     flex: none;
 
     .login-card-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       color: var(--el-color-primary-dark-2);
     }
 
