@@ -9,7 +9,7 @@
       </el-badge>
     </span>
     <span class="item">
-      <user-info />
+      <user-info :size="iconSize" />
     </span>
     <span class="item">
       <switch-language :size="iconSize" />
@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      iconSize: 24,
+      iconSize: 20,
     }
   },
 }
@@ -51,7 +51,6 @@ export default {
 
   .item:hover {
     color: var(--el-color-primary);
-    background-color: var(--el-color-info-light-9);
   }
 }
 </style>

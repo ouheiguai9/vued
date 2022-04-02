@@ -1,6 +1,6 @@
 <template>
   <el-dropdown>
-    <span class="drop-down-link"> <el-avatar shape="square" size="small" :src="avatarUrl" /> &nbsp;{{ username }} </span>
+    <span class="drop-down-link"> <el-avatar :size="size" :src="avatarUrl" /> &nbsp;{{ username }} </span>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item :icon="User">个人中心</el-dropdown-item>
@@ -15,6 +15,12 @@
 import { User, Tools, SwitchButton } from '@element-plus/icons-vue'
 export default {
   name: 'UserInfo',
+  props: {
+    size: {
+      type: Number,
+      default: 24,
+    },
+  },
   setup() {
     return {
       User,
@@ -34,8 +40,6 @@ export default {
 <style scoped lang="scss">
 .drop-down-link {
   display: flex;
-  margin-left: 10px;
   align-items: center;
-  color: var(--el-color-primary);
 }
 </style>
