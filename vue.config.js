@@ -1,4 +1,3 @@
-// const createMiddleware = require('@apidevtools/swagger-express-middleware')
 const nodeModulesPath = 'node_modules'
 const isProduction = process.env.NODE_ENV === 'production'
 //不参与打包的第三方类库
@@ -34,22 +33,6 @@ modules.forEach((module) => {
 
 // noinspection JSUnusedGlobalSymbols
 module.exports = {
-  // devServer: {
-  //   before: function (app) {
-  //     await new Promise(resolve => {
-  //       createMiddleware('./swagger.yaml', app, function (err, middleware) {
-  //         app.use(
-  //           middleware.metadata(),
-  //           middleware.CORS(),
-  //           middleware.files(),
-  //           middleware.parseRequest(),
-  //           middleware.validateRequest(),
-  //           middleware.mock()
-  //         )
-  //       })
-  //     })
-  //   },
-  // },
   chainWebpack: (config) => {
     //启动后自动打开浏览器
     config.devServer.open(true)
