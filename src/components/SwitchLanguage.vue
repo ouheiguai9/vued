@@ -1,6 +1,6 @@
 <template>
   <el-dropdown size="small" @command="switchLanguage">
-    <el-icon :size="size">
+    <el-icon class="icon-btn">
       <svg class="icon" viewBox="0 0 24 24">
         <path
           fill="currentColor"
@@ -27,12 +27,6 @@
 import { StarFilled, Star } from '@element-plus/icons-vue'
 export default {
   name: 'SwitchLanguage',
-  props: {
-    size: {
-      type: Number,
-      default: 24,
-    },
-  },
   setup() {
     return {
       StarFilled,
@@ -47,6 +41,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.icon-btn {
+  cursor: pointer;
+  font-size: var(--icon-size);
+}
 </style>

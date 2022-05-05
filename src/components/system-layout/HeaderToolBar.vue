@@ -1,18 +1,21 @@
 <template>
   <div class="header-tool-bar">
     <span class="item">
-      <el-icon :size="iconSize"><question-filled /></el-icon>
+      <el-icon><question-filled /></el-icon>
     </span>
+    <el-divider direction="vertical" />
     <span class="item">
       <el-badge :value="0">
-        <el-icon :size="iconSize"><bell /></el-icon>
+        <el-icon><bell /></el-icon>
       </el-badge>
     </span>
+    <el-divider direction="vertical" />
     <span class="item">
-      <user-info :size="iconSize" />
+      <user-info />
     </span>
+    <el-divider direction="vertical" />
     <span class="item">
-      <switch-language :size="iconSize" />
+      <switch-language />
     </span>
   </div>
 </template>
@@ -30,27 +33,24 @@ export default {
       QuestionFilled,
     }
   },
-  data() {
-    return {
-      iconSize: 20,
-    }
-  },
 }
 </script>
 
 <style scoped lang="scss">
 .header-tool-bar {
+  --icon-size: 20px;
   display: flex;
   height: 100%;
   align-items: center;
+
   .item {
-    display: inline-block;
-    margin-left: 20px;
     cursor: pointer;
+    font-size: var(--icon-size);
+    --color: var(--el-text-color-primary);
   }
 
   .item:hover {
-    color: var(--el-color-primary);
+    --color: var(--el-color-primary);
   }
 }
 </style>

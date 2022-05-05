@@ -1,6 +1,9 @@
 <template>
   <el-dropdown>
-    <span class="drop-down-link"> <el-avatar :size="size" :src="avatarUrl" /> &nbsp;{{ username }} </span>
+    <span class="drop-down-link">
+      <el-avatar :src="avatarUrl" />
+      <span class="txt-username" :title="username">&nbsp;{{ username }}</span>
+    </span>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item :icon="User">个人中心</el-dropdown-item>
@@ -15,12 +18,6 @@
 import { User, Tools, SwitchButton } from '@element-plus/icons-vue'
 export default {
   name: 'UserInfo',
-  props: {
-    size: {
-      type: Number,
-      default: 24,
-    },
-  },
   setup() {
     return {
       User,
@@ -30,7 +27,7 @@ export default {
   },
   data() {
     return {
-      username: '测试用户',
+      username: '测试用户111111',
       avatarUrl: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
     }
   },
@@ -41,5 +38,16 @@ export default {
 .drop-down-link {
   display: flex;
   align-items: center;
+
+  .el-avatar--default {
+    --el-avatar-size: var(--icon-size);
+  }
+
+  .txt-username {
+    max-width: 70px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 </style>

@@ -81,6 +81,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       color: var(--el-color-primary-dark-2);
+      --icon-size: 24px;
     }
 
     .btn-box {
