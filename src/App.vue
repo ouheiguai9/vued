@@ -1,6 +1,6 @@
 <template>
   <el-config-provider :locale="$store.getters['system/getElementLocale']" size="small" :z-index="3000">
-    <system-layout v-if="$store.getters['security/isAuthenticated']">
+    <system-layout v-if="$store.getters['security/isAuthenticated']" name="left">
       <template #main>
         <router-view />
       </template>

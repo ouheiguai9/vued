@@ -5,7 +5,7 @@
       <header-tool-bar />
     </header>
     <main>
-      <el-scrollbar>
+      <el-scrollbar view-style="padding: var(--layout-main-padding)">
         <slot name="main"></slot>
       </el-scrollbar>
     </main>
@@ -28,7 +28,7 @@ export default {
   min-width: 1280px;
   flex-direction: column;
   align-items: center;
-  background-color: var(--el-color-info-light-9);
+  background-color: var(--layout-main-bg);
 
   header {
     display: flex;
