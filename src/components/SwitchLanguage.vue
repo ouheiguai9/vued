@@ -44,6 +44,6 @@ export default {
 <style scoped lang="scss">
 .icon-btn {
   cursor: pointer;
-  font-size: var(--icon-size);
+  font-size: var(--switch-language-icon-size);
 }
 </style>

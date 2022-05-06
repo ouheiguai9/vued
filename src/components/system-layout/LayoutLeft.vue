@@ -60,8 +60,8 @@ export default {
 
     .aside-logo,
     .aside-tool {
-      height: 48px;
-      padding: 0 16px;
+      height: var(--layout-header-height);
+      padding: 0 var(--layout-padding);
       flex: none;
     }
 
@@ -76,12 +76,12 @@ export default {
 
       .icon-btn {
         cursor: pointer;
-        font-size: 20px;
-        --color: var(--el-text-color-primary);
+        font-size: var(--layout-icon-size);
+        --color: var(--layout-icon-color);
       }
 
       .icon-btn:hover {
-        --color: var(--el-color-primary);
+        --color: var(--layout-icon-hover-color);
       }
     }
   }
@@ -99,12 +99,12 @@ export default {
     header {
       display: flex;
       width: 100%;
-      height: 48px;
-      padding: 0 16px;
+      height: var(--layout-header-height);
+      padding: 0 var(--layout-padding);
       justify-content: space-between;
       align-items: center;
       flex: none;
-      background-color: #fff;
+      background-color: var(--layout-header-bg);
       box-shadow: var(--el-box-shadow-light);
     }
   }

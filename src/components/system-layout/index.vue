@@ -35,7 +35,14 @@ export default {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  --layout-icon-size: 22px;
+  --layout-icon-color: var(--el-text-color-primary);
+  --layout-icon-hover-color: var(--el-color-primary);
+  --layout-padding: 16px;
+  --layout-header-height: 48px;
+  --layout-header-bg: #fff;
   --layout-main-bg: var(--el-color-info-light-9);
-  --layout-main-padding: 10px;
+  --layout-main-padding: var(--layout-padding);
+  --switch-language-icon-size: var(--layout-icon-size);
 }
 </style>

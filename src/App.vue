@@ -19,6 +19,7 @@ export default {
 <style lang="scss">
 * {
   box-sizing: border-box;
+  font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 }
 
 html,
@@ -29,5 +30,16 @@ body,
   margin: 0;
   padding: 0;
   overflow: hidden;
+}
+
+body {
+  overflow: auto;
+}
+
+#app {
+  max-width: 1920px;
+  min-width: 1280px;
+  margin: 0 auto;
+  --switch-language-icon-size: 24px;
 }
 </style>

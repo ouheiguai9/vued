@@ -38,19 +38,18 @@ export default {
 
 <style scoped lang="scss">
 .header-tool-bar {
-  --icon-size: 20px;
   display: flex;
   height: 100%;
   align-items: center;
 
   .item {
     cursor: pointer;
-    font-size: var(--icon-size);
-    --color: var(--el-text-color-primary);
+    font-size: var(--layout-icon-size);
+    --color: var(--layout-icon-color);
   }
 
   .item:hover {
-    --color: var(--el-color-primary);
+    --color: var(--layout-icon-hover-color);
   }
 }
 </style>

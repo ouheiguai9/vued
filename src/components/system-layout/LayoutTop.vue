@@ -25,7 +25,6 @@ export default {
   display: flex;
   position: relative;
   height: 100%;
-  min-width: 1280px;
   flex-direction: column;
   align-items: center;
   background-color: var(--layout-main-bg);
@@ -33,18 +32,17 @@ export default {
   header {
     display: flex;
     width: 100%;
-    height: 48px;
-    padding: 0 16px;
+    height: var(--layout-header-height);
+    padding: 0 var(--layout-padding);
     justify-content: space-between;
     align-items: center;
     flex: none;
-    background-color: #fff;
+    background-color: var(--layout-header-bg);
     box-shadow: var(--el-box-shadow-light);
   }
 
   main {
     width: 100%;
-    max-width: 1920px;
     flex: 1 1 auto;
     overflow: auto;
   }

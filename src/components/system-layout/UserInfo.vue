@@ -40,7 +40,7 @@ export default {
   align-items: center;
 
   .el-avatar--default {
-    --el-avatar-size: var(--icon-size);
+    --el-avatar-size: var(--layout-icon-size);
   }
 
   .txt-username {
