@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown size="small" @command="switchLanguage">
+  <el-dropdown size="small" style="font-size: 0" @command="switchLanguage">
     <el-icon class="icon-btn">
       <svg class="icon" viewBox="0 0 24 24">
         <path

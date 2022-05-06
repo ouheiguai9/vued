@@ -1,6 +1,6 @@
 <template>
   <el-dropdown>
-    <span class="drop-down-link">
+    <span class="user-info">
       <el-avatar :src="avatarUrl" />
       <span class="txt-username" :title="username">&nbsp;{{ username }}</span>
     </span>
@@ -35,9 +35,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.drop-down-link {
+.user-info {
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   .el-avatar--default {
     --el-avatar-size: var(--layout-icon-size);

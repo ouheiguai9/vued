@@ -1,22 +1,14 @@
 <template>
   <div class="header-tool-bar">
-    <span class="item">
-      <el-icon><question-filled /></el-icon>
-    </span>
+    <el-icon class="item"><question-filled /></el-icon>
     <el-divider direction="vertical" />
-    <span class="item">
-      <el-badge :value="0">
-        <el-icon><bell /></el-icon>
-      </el-badge>
-    </span>
+    <el-badge :value="0">
+      <el-icon class="item"><bell /></el-icon>
+    </el-badge>
     <el-divider direction="vertical" />
-    <span class="item">
-      <user-info />
-    </span>
+    <user-info />
     <el-divider direction="vertical" />
-    <span class="item">
-      <switch-language />
-    </span>
+    <switch-language class="item" />
   </div>
 </template>
 

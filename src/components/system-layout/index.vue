@@ -35,7 +35,7 @@ export default {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  --layout-icon-size: 22px;
+  --layout-icon-size: 24px;
   --layout-icon-color: var(--el-text-color-primary);
   --layout-icon-hover-color: var(--el-color-primary);
   --layout-padding: 16px;
