@@ -1,21 +1,19 @@
 <template>
-  <el-dropdown size="small" style="font-size: 0" @command="switchLanguage">
+  <el-dropdown style="font-size: 0" @command="switchLanguage">
     <el-icon class="icon-btn">
-      <svg class="icon" viewBox="0 0 24 24">
+      <svg class="icon" viewBox="0 0 1024 1024">
         <path
-          fill="currentColor"
-          d="m18.5 10l4.4 11h-2.155l-1.201-3h-4.09l-1.199 3h-2.154L16.5 10h2zM10 2v2h6v2h-1.968a18.222 18.222 0 0 1-3.62 6.301a14.864 14.864 0 0 0 2.336 1.707l-.751 1.878A17.015 17.015 0 0 1 9 13.725a16.676 16.676 0 0 1-6.201 3.548l-.536-1.929a14.7 14.7 0 0 0 5.327-3.042A18.078 18.078 0 0 1 4.767 8h2.24A16.032 16.032 0 0 0 9 10.877a16.165 16.165 0 0 0 2.91-4.876L2 6V4h6V2h2zm7.5 10.885L16.253 16h2.492L17.5 12.885z"
+          d="M928 928c-12.4 0-24.2-7.2-29.4-19.4L852 800H620l-46.6 108.6c-7 16.2-25.8 23.8-42 16.8s-23.8-25.8-16.8-42l192-448c5-11.8 16.6-19.4 29.4-19.4s24.4 7.6 29.4 19.4l192 448c7 16.2-0.6 35-16.8 42-4.2 1.8-8.4 2.6-12.6 2.6z m-280.6-192h177.2L736 529.2 647.4 736zM160 800c-11 0-21.6-5.6-27.6-15.8-9-15.2-4-34.8 11.2-43.8 1.2-0.6 118.8-71.2 229.4-206.6 78.6-96.2 125.6-216.4 146.2-277.8H96c-17.6 0-32-14.4-32-32s14.4-32 32-32h256V128c0-17.6 14.4-32 32-32s32 14.4 32 32v64h256c17.6 0 32 14.4 32 32s-14.4 32-32 32h-85.4c-17.4 56.6-68.2 201.2-163.8 318.2-118.2 144.8-241.4 218.2-246.6 221.4-5 3-10.6 4.4-16.2 4.4z"
+        ></path>
+        <path
+          d="M512 704c-6.8 0-13.6-2.2-19.6-6.6-3-2.4-74.2-57.6-149.8-155.8-75-97.2-113.6-171.8-115.2-175-8-15.8-1.8-35 13.8-43 15.8-8 35-1.8 43 13.8 0.4 0.8 37.8 72.8 108.8 165 70.2 91.2 137.6 143.6 138.2 144.2 14 10.8 16.6 31 5.8 44.8-6 8.4-15.4 12.6-25 12.6z"
         ></path>
       </svg>
     </el-icon>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item
-          v-for="item in $store.getters['system/getLanguageOptions']"
-          :key="item.value"
-          :command="item.value"
-          :icon="$store.getters['system/getLanguage'] === item.value ? StarFilled : Star"
-        >
+        <el-dropdown-item v-for="item in languageOptions" :key="item.value" :command="item.value">
+          <el-icon><Check v-if="language === item.value" /></el-icon>
           {{ item.text }}
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -24,19 +22,22 @@
 </template>
 
 <script>
-import { StarFilled, Star } from '@element-plus/icons-vue'
+import { Check } from '@element-plus/icons-vue'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'SwitchLanguage',
-  setup() {
-    return {
-      StarFilled,
-      Star,
-    }
+  components: { Check },
+  computed: {
+    // 使用对象展开运算符将 getter 混入 computed 对象中
+    ...mapGetters({
+      languageOptions: 'system/getLanguageOptions',
+      language: 'system/getLanguage',
+    }),
   },
   methods: {
-    switchLanguage(language) {
-      this.$store.commit('system/setLanguage', language)
-    },
+    ...mapMutations({
+      switchLanguage: 'system/setLanguage',
+    }),
   },
 }
 </script>

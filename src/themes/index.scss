@@ -1,0 +1,6 @@
+$themes: light, dark;
+@each $theme in $themes {
+  section.primary-main-theme-section.#{$theme} {
+    backgroud-color: #fff;
+  }
+}

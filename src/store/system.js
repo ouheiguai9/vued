@@ -9,10 +9,25 @@ export default {
     i18n,
     //当前使用的语言，默认zhCn
     language: 'zhCn',
+    //Element Plus组件默认size
+    elementSize: 'default',
+    //当前使用布局
+    layout: 'left',
+    //系统主题
+    theme: 'light',
   },
   getters: {
     getElementLocale(state) {
       return state.i18n[state.language].element
+    },
+    getElementSize(state) {
+      return state.elementSize
+    },
+    getLayout(state) {
+      return state.layout
+    },
+    getTheme(state) {
+      return state.theme
     },
     getLanguage(state) {
       return state.language
@@ -29,6 +44,9 @@ export default {
   mutations: {
     setLanguage(state, language) {
       state.language = language
+    },
+    setTheme(state, theme) {
+      state.theme = theme
     },
   },
   actions: {},
