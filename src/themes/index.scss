@@ -1,6 +1,67 @@
-$themes: light, dark;
-@each $theme in $themes {
-  section.primary-main-theme-section.#{$theme} {
-    backgroud-color: #fff;
+@use 'sass:map';
+@use 'element-plus/theme-chalk/src/mixins/_var' as *;
+
+@function setBgColor($bg,$page,$overlay) {
+  @return (
+          '': $bg,
+          'page': $page,
+          'overlay': $overlay,
+  )
+}
+
+@function setBorderColor($color) {
+  @return (
+          'darker': rgba($color, 0.35),
+          'dark': rgba($color, 0.3),
+          '': rgba($color, 0.25),
+          'light': rgba($color, 0.2),
+          'lighter': rgba($color, 0.15),
+          'extra-light': rgba($color, 0.1),
+  )
+}
+
+@function setFillColor($color) {
+  @return (
+          'darker': rgba($color, 0.2),
+          'dark': rgba($color, 0.16),
+          '': rgba($color, 0.12),
+          'light': rgba($color, 0.08),
+          'lighter': rgba($color, 0.04),
+          'extra-light': rgba($color, 0.02),
+          'blank': transparent,
+  )
+}
+
+@function setTextColor($color) {
+  @return (
+          'primary': rgba($color, 0.95),
+          'regular': rgba($color, 0.85),
+          'secondary': rgba($color, 0.65),
+          'placeholder': rgba($color, 0.55),
+          'disabled': rgba($color, 0.4),
+  )
+}
+
+$themes: (
+        dark:(
+                bg-color:setBgColor(#0a0a0a, #141414, #1d1e1f),
+                text-color:setTextColor(#f0f5ff),
+                border-color:setBorderColor(#f5f8ff),
+                fill-color:setFillColor(#fafcff),
+        ),
+        light:(
+                bg-color:setBgColor(#fff, #fff, #fff),
+                text-color:setTextColor(#303133),
+                border-color:setBorderColor(#dcdfe6),
+                fill-color:setFillColor(#f0f2f5),
+        )
+);
+
+
+@each $theme-name, $theme-var in $themes {
+  section.primary-main-theme-section.#{$theme-name} {
+    @each $attr, $var in $theme-var {
+      @include set-component-css-var($attr, $var)
+    }
   }
 }
