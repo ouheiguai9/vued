@@ -3,7 +3,7 @@
     <aside :class="{ 'aside-fold': !asideIsExpand }">
       <div class="aside-logo"></div>
       <el-scrollbar>
-        <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="!asideIsExpand">
+        <el-menu default-active="2" class="el-menu-no-border" :collapse="!asideIsExpand">
           <el-sub-menu index="1">
             <template #title>
               <el-icon><location /></el-icon>
@@ -91,7 +91,7 @@ export default {
     width: 240px;
     flex-direction: column;
     flex: none;
-    background-color: #fff;
+    background-color: var(--layout-menu-bg);
     box-shadow: var(--el-box-shadow-light);
     z-index: 1000;
     transition: all var(--el-transition-duration);
@@ -102,11 +102,18 @@ export default {
       padding: 0 20px;
       flex: none;
     }
+    .aside-logo {
+      border-bottom: 1px solid var(--el-border-color);
+    }
+
+    .el-menu-no-border {
+      border: none;
+    }
 
     .aside-tool {
       display: flex;
       align-items: center;
-      border-top: var(--el-border);
+      border-top: 1px solid var(--el-border-color);
 
       .icon-btn {
         cursor: pointer;
@@ -140,6 +147,7 @@ export default {
       flex: none;
       background-color: var(--layout-header-bg);
       box-shadow: var(--el-box-shadow-light);
+      border-bottom: 1px solid var(--el-border-color);
     }
   }
 }

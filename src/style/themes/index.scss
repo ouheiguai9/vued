@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use 'element-plus/theme-chalk/src/mixins/_var' as *;
+@use 'node_modules/element-plus/theme-chalk/src/mixins/var' as *;
 
 @function setBgColor($bg,$page,$overlay) {
   @return (

@@ -29,38 +29,3 @@ export default {
   },
 }
 </script>
-<style lang="scss">
-* {
-  box-sizing: border-box;
-  font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
-}
-
-html,
-body,
-#app {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-body {
-  overflow: auto;
-}
-
-#app {
-  max-width: 1920px;
-  min-width: 1280px;
-  margin: 0 auto;
-  --switch-language-icon-size: 24px;
-}
-section.primary-main-theme-section {
-  width: 100%;
-  height: 100%;
-}
-section.primary-main-theme-section.light {
-}
-section.primary-main-theme-section.dark {
-}
-</style>

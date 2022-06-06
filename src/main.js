@@ -2,12 +2,12 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './themes/index.scss'
 import ElementPlus from 'element-plus'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueI18n from './plugins/vue-i18n'
 import Const from './constant'
+import './style/index.scss'
 
 const app = createApp(App).use(ElementPlus).use(VueAxios, axios).use(store).use(router).use(VueI18n)
 //自定义权限指令

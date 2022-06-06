@@ -40,8 +40,9 @@ export default {
   --layout-icon-hover-color: var(--el-color-primary);
   --layout-padding: 16px;
   --layout-header-height: 48px;
-  --layout-header-bg: #fff;
-  --layout-main-bg: var(--el-color-info-light-9);
+  --layout-header-bg: var(--el-bg-color);
+  --layout-menu-bg: var(--el-bg-color);
+  --layout-main-bg: var(--el-bg-color-page);
   --layout-main-padding: var(--layout-padding);
   --switch-language-icon-size: var(--layout-icon-size);
 }
